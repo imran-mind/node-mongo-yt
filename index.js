@@ -1,24 +1,19 @@
 const express = require('express');
 const app = express();
-const {dbConnection, getDBInstance} = require('./dbConnection');
+const {getMongoDBConnection} = require('./db-connection');
 
-initServer();
 let db;
-async function initServer(){
+async function init(){
     try{
-        await dbConnection();
-        db = getDBInstance();
+        db = getMongoDBConnection();
+        console.log('MongoDB connected....');
         app.listen(8080, ()=>{
-            console.log('Server is running on PORT: 8080');
+            console.log('Server is running on port:8080');
         })
     }catch(err){
-        console.log('Error while creating server',err);
-        process.exit();
+        console.log('Error',err);
     }
 }
 
-app.get('/movies',async (req,res)=>{
-    const movies = await db.collection('movies').find({}).toArray();
-    res.json({message: "movies data", data: movies});
-})
+init();
 
