@@ -76,3 +76,13 @@ app.put('/movies/:id', async (req,res)=>{
         res.status(500).json({message: "Internal server error"});
     }
 })
+
+app.delete('/movies/:id',async (req,res)=>{
+    try{
+        const id = req.params.id;
+        await db.collection('movies').deleteOne({_id: new ObjectId(id)});
+        res.status(204).json();
+    }catch(err){
+        res.status(500).json({message:"Internal Server Error"});
+    }
+})
