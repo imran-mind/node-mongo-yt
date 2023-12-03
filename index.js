@@ -61,3 +61,18 @@ app.post('/movies',async (req,res)=>{
     }
 });
 
+
+app.put('/movies/:id', async (req,res)=>{
+    try{
+        const body = req.body;
+        const query = {_id: new ObjectId(req.params.id)};
+        const newObject = {$set: {...body}}
+        console.log(JSON.stringify(newObject));
+        const updated = await db.collection('movies').updateOne(query, newObject);
+        console.log('updated---',updated);
+        res.status(200).json({message: 'Updated!'});
+    }catch(err){
+        console.log(err);
+        res.status(500).json({message: "Internal server error"});
+    }
+})
