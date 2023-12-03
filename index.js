@@ -3,6 +3,7 @@ const app = express();
 const {getMongoDBConnection} = require('./db-connection');
 const {ObjectId} = require('mongodb');
 
+app.use(express.json());
 let db;
 async function init(){
     try{
@@ -17,7 +18,6 @@ async function init(){
 }
 init();
 
-
 app.get('/movies', async (req,res)=>{
     try{
         const page = parseInt(req.query.page); // '1' -> 1
@@ -28,7 +28,7 @@ app.get('/movies', async (req,res)=>{
             .skip(skipCount)
             .limit(limit)
             .sort({name: -1})
-            .project(projection)
+            // .project(projection)
             .toArray();
         console.log('len ',movies.length);
         res.status(200).json(movies);
@@ -48,4 +48,16 @@ app.get('/movies/:id',async (req,res)=>{
         res.status(500).json({message: "internal server error"});
     }
 })
+
+app.post('/movies',async (req,res)=>{
+    try{
+        const body = req.body;
+        console.log('body ',body);
+        await db.collection('movies').insertOne({...body});
+        res.status(201).json({message:"Success!"})
+    }catch(err){
+        console.log(err);
+        res.status(500).json({message: "Internal server error"});
+    }
+});
 
