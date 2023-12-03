@@ -66,9 +66,10 @@ app.put('/movies/:id', async (req,res)=>{
     try{
         const body = req.body;
         const query = {_id: new ObjectId(req.params.id)};
-        const newObject = {$set: {...body}}
-        console.log(JSON.stringify(newObject));
-        const updated = await db.collection('movies').updateOne(query, newObject);
+        const updateDoc = {$set: {...body}};
+        const options = { upsert: true };
+        const updated = await db.collection('movies')
+            .updateOne(query, updateDoc, options);
         console.log('updated---',updated);
         res.status(200).json({message: 'Updated!'});
     }catch(err){
