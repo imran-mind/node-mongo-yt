@@ -17,20 +17,19 @@ async function init(){
 }
 init();
 
-
+// asc-> 1
+// desc-> -1
 app.get('/movies', async (req,res)=>{
     try{
-        const page = parseInt(req.query.page); // '1' -> 1
-        const limit = parseInt(req.query.limit);
+        const page = parseInt(req.query.page) || 0;
+        const limit = parseInt(req.query.limit) || 10;
         const skipCount = page * limit;
-        const projection = { name: 1, rating:1};
         const movies = await db.collection('movies').find({})
             .skip(skipCount)
             .limit(limit)
             .sort({name: -1})
-            .project(projection)
+            .project({name: 0, rating: 0})
             .toArray();
-        console.log('len ',movies.length);
         res.status(200).json(movies);
     }catch(err){
         console.log(err);
