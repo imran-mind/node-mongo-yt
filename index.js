@@ -3,6 +3,7 @@ const app = express();
 const {getMongoDBConnection} = require('./db-connection');
 const {ObjectId} = require('mongodb');
 
+app.use(express.json());
 let db;
 async function init(){
     try{
@@ -48,3 +49,12 @@ app.get('/movies/:id',async (req,res)=>{
     }
 })
 
+app.post('/movies', async (req,res)=>{
+    try{
+        const body = req.body;
+        const result = await db.collection('movies').insertOne(body);
+        res.status(201).json(result);
+    }catch(err){
+        res.status(500).json({message: "internal server error"});
+    }
+})
