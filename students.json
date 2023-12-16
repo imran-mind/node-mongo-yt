@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Alice",
+    "age": 20,
+    "grade": 13,
+    "gender": "male",
+    "subjects": [
+      "Math",
+      "Physics",
+      "Chemistry"
+    ]
+  },
+  {
+    "name": "Bob",
+    "age": 19,
+    "grade": 11,
+    "gender": "male",
+    "subjects": [
+      "History",
+      "English",
+      "Geography"
+    ]
+  },
+  {
+    "name": "Charlie",
+    "age": 21,
+    "grade": 12,
+    "gender": "male",
+    "subjects": [
+      "Biology",
+      "Physics",
+      "Math"
+    ]
+  },
+  {
+    "name": "Elly",
+    "age": 18,
+    "grade": 10,
+    "gender": "male",
+    "subjects": [
+      "Math",
+      "English",
+      "Chemistry"
+    ]
+  },
+  {
+    "name": "David",
+    "age": 17,
+    "grade": 9,
+    "gender": "male",
+    "subjects": [
+      "Math",
+      "English",
+      "Chemistry"
+    ]
+  },
+  {
+    "name": "Eva",
+    "age": 20,
+    "grade": 11,
+    "gender": "male",
+    "subjects": [
+      "History",
+      "Physics",
+      "Geography"
+    ]
+  },
+  {
+    "name": "Vicky",
+    "age": 22,
+    "grade": 8,
+    "gender": "female",
+    "subjects": [
+      "History",
+      "Physics",
+      "Geography"
+    ]
+  },
+  {
+    "name": "Kathleen",
+    "age": 23,
+    "grade": 7,
+    "gender": "female",
+    "subjects": [
+      "History",
+      "Physics",
+      "Geography"
+    ]
+  },
+{
+    "name": "Aliya",
+    "age": 24,
+    "grade": 8,
+    "gender": "female",
+    "subjects": [
+      "History",
+      "Physics",
+      "Geography"
+    ]
+  },
+  {
+    "name": "Nancy",
+    "age": 26,
+    "grade": 7,
+    "gender": "female",
+    "subjects": [
+      "History",
+      "Physics",
+      "Geography"
+    ]
+  }
+]
